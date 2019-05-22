@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>Object Style</h1>
 
     <SectionText :message="message">
       <template slot="headline">
@@ -37,36 +37,50 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import Vue from "vue";
 import { v4 as uuid } from "uuid";
 import SectionText from "@/components/SectionText.vue";
 import SectionModel from "@/components/SectionModel.vue";
 import { Task } from "@/types/models";
 
-@Component({
+type Data = {
+  message: string;
+  value: string;
+  formText: string;
+  tasks: Task[];
+};
+
+export default Vue.extend({
   components: {
     SectionText,
     SectionModel
-  }
-})
-export default class Home extends Vue {
-  message = "text message";
-  value = "";
-  formText = "";
-  tasks: Task[] = [];
+  },
 
-  get hasTasks() {
-    return this.tasks.length > 0;
-  }
+  data(): Data {
+    return {
+      message: "text message",
+      value: "",
+      formText: "",
+      tasks: []
+    };
+  },
 
-  handleSubmit() {
-    const body = this.formText.trim();
-    if (body === "") {
-      return;
+  computed: {
+    hasTasks(): boolean {
+      return this.tasks.length > 0;
     }
-    const task: Task = { id: uuid(), body };
-    this.tasks.push(task);
-    this.formText = "";
+  },
+
+  methods: {
+    handleSubmit() {
+      const body = this.formText.trim();
+      if (body === "") {
+        return;
+      }
+      const task: Task = { id: uuid(), body };
+      this.tasks.push(task);
+      this.formText = "";
+    }
   }
-}
+});
 </script>
