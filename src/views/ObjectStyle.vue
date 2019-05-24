@@ -18,7 +18,7 @@
       <form @submit.prevent="handleSubmit">
         <div>
           <label for="input">Add Task：</label>
-          <input id="input" v-model="formText" type="text" />
+          <input id="input" v-model.trim="formText" type="text" />
         </div>
       </form>
 
@@ -73,11 +73,10 @@ export default Vue.extend({
 
   methods: {
     handleSubmit() {
-      const body = this.formText.trim();
-      if (body === "") {
+      if (this.formText === "") {
         return;
       }
-      const task: Task = { id: uuid(), body };
+      const task: Task = { id: uuid(), body: this.formText };
       this.tasks.push(task);
       this.formText = "";
     }

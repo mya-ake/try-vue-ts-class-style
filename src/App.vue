@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Class Style</router-link> |
-      <router-link to="/object-style/">Object Style</router-link>
+      <router-link to="/object-style/">Object Style</router-link> |
+      <router-link to="/contact">Contact</router-link>
     </div>
     <router-view />
   </div>

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import ClassStyle from "@/views/ClassStyle.vue";
-import ObjectStyle from "@/views/ObjectStyle.vue";
+import { ClassStyle, ObjectStyle, ContactForm } from "@/views";
 
 Vue.use(Router);
 
@@ -18,6 +17,10 @@ export default new Router({
       path: "/object-style",
       name: "object-style",
       component: ObjectStyle
+    },
+    {
+      path: "/contact",
+      component: ContactForm
     }
   ]
 });
