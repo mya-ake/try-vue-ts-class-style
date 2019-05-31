@@ -34,6 +34,7 @@ export default Vue.extend({
   methods: {
     async handleSubmit(form: Contact) {
       await contactStore.saveValues(form);
+      this.$router.push("/contact/confirm");
     }
   }
 });

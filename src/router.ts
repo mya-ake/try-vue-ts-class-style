@@ -1,6 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { ClassStyle, ObjectStyle, ContactForm } from "@/views";
+import {
+  ClassStyle,
+  ObjectStyle,
+  Contact,
+  ContactConfirm,
+  NotFound
+} from "@/views";
 
 Vue.use(Router);
 
@@ -20,7 +26,15 @@ export default new Router({
     },
     {
       path: "/contact",
-      component: ContactForm
+      component: Contact
+    },
+    {
+      path: "/contact/confirm",
+      component: ContactConfirm
+    },
+    {
+      path: "*",
+      component: NotFound
     }
   ]
 });
